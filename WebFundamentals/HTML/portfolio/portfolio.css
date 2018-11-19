@@ -1,0 +1,109 @@
+
+body {
+    margin: 0;
+    padding: 0;
+}
+#container {
+    width: 940px;
+    margin: auto;
+}
+.header {
+    padding: 9px 15px;
+    background-color: #f9f9f9;
+}
+    div.header h1, div.header p {
+        display: inline-block;
+        width: 45%;
+        margin: 0;
+    }
+    div.header p {
+        width: 50%;
+        text-align: right;
+        font-size: 1.4em;
+        font-weight: bold;
+        margin: 0;
+    }
+#main {
+    padding: 15px;
+    background: #945CA0; /*css-gradient.com*/
+    background: -webkit-radial-gradient(center, #945CA0, #0C0909);
+    background: -moz-radial-gradient(center, #945CA0, #0C0909);
+    background: radial-gradient(ellipse at center, #945CA0, #0C0909);
+}
+
+#about-text {
+    display: inline-block;
+    width: 430px;
+    height: 291px;
+    vertical-align: top;
+    margin-left: 27px;
+    background: #F5F5F5;
+    background: -webkit-radial-gradient(top left, #F5F5F5, #9E8AA5);
+    background: -moz-radial-gradient(top left, #F5F5F5, #9E8AA5);
+    background: radial-gradient(top left, #F5F5F5, #9E8AA5);
+}
+    .about img {
+        width: 430px;
+        border: solid 5px lightgray;
+    }
+h2, h3 {
+    margin: 0;
+    background: #6B676C;
+    background: -webkit-radial-gradient(center, #6B676C, #DADADA);
+    background: -moz-radial-gradient(center, #6B676C, #DADADA);
+    background: radial-gradient(ellipse at center, #6B676C, #DADADA);
+    padding: 9px;
+    color: white;
+}
+    #about-text p, #about-text a, .proj-box p {
+        padding: 9px;
+        margin-top: 0;
+        margin-bottom: 2px;
+    }
+a {
+    color: black;
+}
+.proj-box {
+    display: inline-block;
+    width: 287px;
+    background: #F5F5F5;
+    background: -webkit-radial-gradient(top left, #F5F5F5, #9E8AA5);
+    background: -moz-radial-gradient(top left, #F5F5F5, #9E8AA5);
+    background: radial-gradient(top left, #F5F5F5, #9E8AA5);
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+    #center-box {
+        margin: 0 16px;
+    }
+    .head-img {
+        width: 287px;
+    }
+    .tech {
+        width: 35px;
+        padding: 6px;
+    }
+    .button {
+        display: block;
+        margin: 13px auto;
+        width: 115px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        background-color: darkgreen;
+        border: 1px solid black;
+        border-radius: 11px;
+        padding: 4px;
+    }
+#footer {
+    text-align: center;
+    padding-top: 8px;
+    background-color: #f9f9f9;
+}
+    #footer img {
+        width:28px;
+    }
+    #footer p {
+        margin: 0;
+        padding-bottom: 15px;
+    }
