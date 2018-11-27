@@ -29,3 +29,18 @@ def mulitples(LowNum, highNum, mult):
         if int % mult == 0:
             print(int)
 mulitples(2,9,3)
+
+list = [3,5,1,2]
+for i in list:
+    print(i)
+# print everything in list
+
+list = [3,5,1,2]
+for i in range(list):
+    print(i)
+# Thought it would either be an error or prints eveything but i see now it was an error
+
+list = [3,5,1,2]
+for i in range(len(list)):
+    print(i)
+# Thought it would print everything in list since it len is 4 but i see now that the only connection it had to list was the length
