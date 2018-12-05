@@ -1,0 +1,13 @@
+body {
+    background-color: #fdfdfd;
+}
+.container {
+    background-color: silver;
+    padding: 5%;
+}
+select {
+    display: inline-block;
+}
+textarea {
+    background-color: white;
+}
