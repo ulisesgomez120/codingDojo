@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Form Info</h1>
+    <div class="container">
+        <h1 class="center">Form Info</h1>
+        <h5>Name:</h5>
+        <p>{{request.form["name"]}}</p>
+        <h5>Location:</h5> 
+        <p>{{request.form["location"]}}</p>
+        <h5>Language:</h5>  
+        <p>{{request.form["language"]}}</p>
+        <h5>Comments:</h5>    
+        <p>{{request.form["comments"]}}</p>
+    </div>
     
+
 </body>
 </html>

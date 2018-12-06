@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dojo Survey</title>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <form action="result" method="post">
+        <form action="/result" method="post">
             <h5>Full Name:</h5> 
             <input type="text" name="name">
             <h5>Dojo Location:</h5> 
@@ -27,7 +28,7 @@
                 </select>
             <h5>Comment(optional):</h5> 
             <textarea name="comments" id="" cols="30" rows="10"></textarea>
-            <input type="button" value="Submit">
+            <button type="submit">Submit</button>
         </form>
     </div>
 </body>
