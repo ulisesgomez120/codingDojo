@@ -1,0 +1,42 @@
+* {
+    margin-top: 3%;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+div.prompt {
+    width: 40%;
+    padding: 90px 20px;
+    display: none;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    margin: 5% auto;
+    border-radius: 3%;
+}
+div.right {
+    display: block;
+    background: green;
+}
+div.high {
+    display: block;
+    background: red;
+}
+div.low {
+    display: block;
+    background: red;
+}
+a {
+    display: none;
+}
+a.right {
+    display: inline-block;
+    padding: 2px 16px;
+    border: 1px solid silver;
+    text-decoration: none;
+    color: green;
+}
+form.right {
+    display: none;
+}
