@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-dark">
+    <div class="container bg-light">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+        <form action="/process" method="post" class="form-group">
+            <h5>Full Name:</h5> 
+            <input type="text" name="name" class="form-control" value="{{session['name']}}">
+            <h5>Dojo Location:</h5> 
+            <select name="location" id="" class="form-control">
+                {% for city in location %}
+                <option value="{{city}}" {% if city == session['location'] %} selected {% endif %}>{{city}}</option> 
+                {% endfor %}
+            </select>
+                <h5>Favorite Language:</h5>  
+                <select name="language" id="" class="form-control">
+                        {% for language in languages %}
+                        <option value="{{language}}" {% if language == session['language'] %} selected {% endif %}>{{language}}</option> 
+                        {% endfor %}
+                </select>
+            <h5>Comment(optional):</h5> 
+            <textarea name="comments" id="" value="hello all" class="form-control"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

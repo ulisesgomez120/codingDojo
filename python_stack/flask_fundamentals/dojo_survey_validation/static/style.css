@@ -1,0 +1,9 @@
+.container {
+    padding: 2%;
+}
+textarea.form-control {
+    height: 120px;
+}
+.flash {
+    color: red;
+}

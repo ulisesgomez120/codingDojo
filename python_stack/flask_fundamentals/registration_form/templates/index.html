@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body class="bg-dark">
+    <div class="container mt-4 bg-light border rounded">
+        <form action="/process" method="POST" class="form-group py-3">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="text-danger">
+                    {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" name="first_name" id="first_name">
+            <label for=last_name">Last Name</label>
+            <input type="text" class="form-control" name="last_name" id="last_name">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" class="form-control" name="confirm_password" id="confirm_password">
+            <input type="submit" value="Submit" class="btn btn-primary mt-3">
+        
+        </form>
+    </div>
+</body>
+</html>
