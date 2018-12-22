@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>My Friends</title>
+</head>
+<body class="bg-info">
+    <div class="container text-center bg-white pb-4">
+        <h1>These are my friends!(in no order)</h1>
+        <table class="table table-striped table-responsive-s">
+            <thead class="thead-light">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Occupation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for friend in friends %}
+                    <tr>
+                        <td>{{ friend['first_name'] }}</td>
+                        <td>{{ friend['last_name'] }}</td>
+                        <td>{{ friend['occupation'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="jumbotron">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="text-left text-danger">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form method="post" action="/friend/add">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="first_name">First Name:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="first_name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="last_name">Last Name:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="last_name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="occupation">Occupation:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="occupation">
+                    </div>
+                </div>                   
+                <button type="submit" class="btn btn-primary mt-3">ADD NEW FRIEND!</button>
+            </form>
+        </div>
+    </div>  
+</body>
+</html>
