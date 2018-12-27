@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Success!</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            {% with errors = get_flashed_messages(category_filter=["register","login"]) %}
+                {% if errors %}
+                    {%- for msg in errors %}
+                        <span class="text-success"> * {{ msg }}</span>
+                    {% endfor -%}
+                {% endif %}
+            {% endwith %}
+            <h2>Thanks {{ session["name"] }}, you have been successfully logged in!</h2>
+            <form action="/logout" method="POST">
+                <input type="submit" value="LOG OUT" class="btn btn-danger mt-3">
+            </form>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
