@@ -1,0 +1,10 @@
+body {
+    margin-top: 4rem;
+}
+ul.messages {
+    list-style: none;
+    padding-bottom: 25px;
+}
+.send-message {
+    margin-bottom: 1.4em;
+}

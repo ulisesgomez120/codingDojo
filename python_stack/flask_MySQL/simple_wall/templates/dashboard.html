@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard</title>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand">Coding Dojo Wall</a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <p class="mb-0 align-middle">Welcome, {{session['user_name']}} </p>
+                </li>
+                <li class="ml-4">
+                    <a href="/logout" class="btn btn-danger">LOGOUT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <h2>Messages for you {{session['user_name']}}</h2>
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li> {{ message['first_name'] }} said:</li>
+                        <li><ul class="messages"><li>{{message['content']}}</li></ul></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col">
+                <h2>Send a message:</h2>
+                {% with errors = get_flashed_messages() %}
+                    {% if errors %}
+                        {%- for msg in errors %}
+                            <span class="text-success"> * {{ msg }}</span>
+                        {% endfor -%}
+                    {% endif %}
+                {% endwith %}
+                {% for user in users %}
+                    <form action="/send_message" method="POST" class="form-inline">
+                        <div class="row send-message">
+                            <div class="col-sm-2">{{ user['first_name'] }}</div>
+                            <div class="col-sm-7"><textarea class="form-control" name="message"></textarea> </div>
+                            <div class="col-sm-3">
+                                <button type="submit">SEND</button>
+                                <input type="hidden" name="received_id" value="{{ user['id'] }}">
+                            </div>
+                        </div>
+                    </form>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
