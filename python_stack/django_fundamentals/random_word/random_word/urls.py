@@ -1,4 +1,4 @@
-"""django_practice_project URL Configuration
+"""random_word URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^',include("apps.blogs.urls")),
-    url(r'^blogs/',include("apps.blogs.urls")),
-    
+    url(r'^', include('apps.word_generator.urls')),
+    url(r'^random_word/', include('apps.word_generator.urls')),
 ]

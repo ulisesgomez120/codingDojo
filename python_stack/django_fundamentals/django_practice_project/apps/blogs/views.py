@@ -5,10 +5,19 @@ def index(request):
     return HttpResponse("placeholder to later display all the list of blogs")
 
 def new(request):
-    return HttpResponse("placeholder to display a new form to create a new blog")
+    return render(request, 'blogs/index.html')
 
 def create(request):
-    return redirect(index)
+    if request.method == "POST":
+        print("*"*50)
+        print(request.POST)
+        print(request.POST['name'])
+        print(request.POST['desc'])
+        request.session['name'] = "test"  # more on session below
+        print("*"*50)
+        return redirect("/")
+    else:
+        return redirect("/")
 
 def show(request, num):
     return HttpResponse(f"placeholder to display blog {num}")

@@ -9,5 +9,4 @@ urlpatterns = [
     url(r'^(?P<num>\d+)/edit$', views.edit),
     url(r'^(?P<num>\d+)/delete$', views.destroy),
     
-
 ]
