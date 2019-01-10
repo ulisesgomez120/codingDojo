@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <title>Session Words</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Add a new word</h1>
+                <form action="/add/" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="word">
+                    <div class="form-group">
+                        <label for="color">Choose a color</label>
+                        <ul class="list-unstyled ml-2">
+                            <li><input type="radio" name="color" id="" value="danger" checked> Red</li>
+                            <li><input type="radio" name="color" id="" value="primary"> Blue</li>
+                            <li><input type="radio" name="color" id="" value="success"> Green</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="big_text" value="1"> Show in BIG fonts
+                    </div>
+                    <button type="submit" class="btn btn-danger">ADD WORD</button>
+                </form>
+            </div>
+            <div class="col border-left border-danger">
+                <a href="/clear/" class="btn btn-danger">Clear Session</a>
+                {% for word in words %}
+                    <p class="text-{{ word.color }} display-{{ word.big_text }}">{{ word.word}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
