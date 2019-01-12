@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^', include('apps.collect_gold.urls')),
     url(r'^process/', include('apps.collect_gold.urls')),
+    url(r'^login/', include('apps.user_login.urls')),
+    url(r'^', include('apps.collect_gold.urls')),
+
 ]
