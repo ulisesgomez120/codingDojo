@@ -5,7 +5,7 @@ from django.contrib import messages
 def index(req):
     return render(req, "users/index.html")
 
-def create(req):
+def create_user(req):
     req.session.clear()
     if req.method == "POST":
         errors = User.objects.validate_register(req.POST)
@@ -15,7 +15,7 @@ def create(req):
             return redirect('/')
         user = User.objects.create_user(req.POST)
         req.session["user_id"] = user.id
-        return redirect('/users/success/')
+        return redirect('/wall')
     else:
         return redirect('/')
 
@@ -26,13 +26,10 @@ def login(req):
             messages.error(req, response)
             return redirect('/')
         req.session['user_id'] = response.id
-        return redirect('/users/success/')
+        return redirect('/wall')
 
 def logout(req):
     req.session.clear()
+    return redirect('/')
 
-def success(req):
-    if 'user_id' not in req.session:
-        messages.error(req, "Not logged in")
-        return redirect('/')
-    return render(req, "users/success.html")
+
