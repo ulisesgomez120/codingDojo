@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import User
+from ..books.models import Book
 from django.contrib import messages
 
 # Create your views here.
@@ -36,4 +37,13 @@ def logout(req):
     messages.error(req, "You have been successfully logged out")
     return redirect("user:index")
 
-
+def show(req, user_id):
+    if "user_id" not in req.session:
+        return redirect("user:index")
+    context = {
+        "user": User.objects.get(id=user_id),
+        "count": User.objects.get(id=user_id).reviews.count(),
+    }
+    
+    return render(req, "users/show.html", context)
+    

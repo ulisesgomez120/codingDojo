@@ -9,7 +9,39 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>User {{request.session.user_id}} logged in!</h1>
-    <a href="{% url 'user:logout' %}" class="btn btn-danger">LOGOUT</a>
+    <div id="nav" nclass="container-fluid">
+        <div class="row m-3">
+            <div class="col"><h2>Hello, {{ user.first_name }} </h2></div>
+            <div class="col text-right">
+                <a href="{% url 'book:new' %}" class="btn btn-success mr-5">Add Book</a>
+                <a href="{% url 'user:logout' %}" class="btn btn-danger mr-5">LOGOUT</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>Recent Book Reviews:</h4>
+                {% for book in recent %}
+                    <p class="ml-1 h5"><a href="{% url 'book:show' book.id %}">{{ book.name }}</a></p>
+                    
+                    <p class="ml-1">Rating: {{ book.reviews.last.rating }}</p>     
+                    <p class="ml-2"><a href="{% url 'user:show' book.reviews.last.reviewer.id %}">{{ book.reviews.last.reviewer.first_name }}</a> says: {{ book.reviews.last.content }}</p>
+                    <p class="ml-2">{{ book.reviews.last.created_at }}</p>
+                    
+                <hr class="my-4">
+                {% endfor %}
+            </div>
+            <div class="col">
+                <h4>All books</h4>
+                <div class="ml-2 border border-dark pre-scrollable">
+                    {% for book in books %}
+                    <p class="ml-1"><a href="{% url 'book:show' book.id %}">{{ book.name }}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

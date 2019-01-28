@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <title>User Info</title>
+</head>
+<body>
+    <div id="nav" nclass="container-fluid">
+        <div class="row m-3">
+            <div class="col"><h2>Hello, {{ user.first_name }} </h2></div>
+            <div class="col text-right">
+                <a href="{% url 'book:index' %}" class="btn btn-success mr-5">Home</a>
+                <a href="{% url 'user:logout' %}" class="btn btn-danger mr-5">LOGOUT</a>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <h2><span class="text-secondary">Name:</span> {{ user.first_name }} {{ user.last_name }} </h2>
+        <h2><span class="text-secondary">Email:</span> {{ user.email }} </h2>
+        <h2><span class="text-secondary">Num of Reviews:</span> {{ count }} </h2>
+    </div>
+    <div class="container">
+        <h3>Books Reviewed:</h3>
+        {% for book_id in book_ids %}
+            <p>{{ Book.objects.get(id=book_id).name }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
